@@ -3,6 +3,8 @@
   "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "@hilla/form": "2.5.6",
     "@hilla/frontend": "2.5.6",
     "@hilla/generator-typescript-cli": "2.5.6",
@@ -18,12 +20,16 @@
     "@hilla/react-components": "2.3.0",
     "@hilla/react-crud": "2.5.6",
     "@hilla/react-form": "2.5.6",
+    "@mui/icons-material": "^5.15.11",
+    "@mui/material": "^5.15.11",
     "@polymer/polymer": "3.5.1",
     "@vaadin/bundles": "24.3.0",
     "@vaadin/common-frontend": "0.0.19",
     "@vaadin/router": "1.7.5",
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
+    "highcharts": "^11.4.0",
+    "highcharts-react-official": "^3.2.1",
     "lit": "3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -75,7 +81,13 @@
     "@hilla/generator-typescript-plugin-subtypes": "$@hilla/generator-typescript-plugin-subtypes",
     "@hilla/react-crud": "$@hilla/react-crud",
     "@hilla/generator-typescript-plugin-backbone": "$@hilla/generator-typescript-plugin-backbone",
-    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli"
+    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli",
+    "@emotion/react": "$@emotion/react",
+    "@emotion/styled": "$@emotion/styled",
+    "@mui/icons-material": "$@mui/icons-material",
+    "@mui/material": "$@mui/material",
+    "highcharts-react-official": "$highcharts-react-official",
+    "highcharts": "$highcharts"
   },
   "vaadin": {
     "dependencies": {
@@ -119,6 +131,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "8de8864bb72925318364f29204499643ea889f38508f12c6e0462b3d4e433802"
+    "hash": "46cde6220a351e02620592d8c73228a45ae53585dbdac4236d0d0301671e80f4"
   }
 }

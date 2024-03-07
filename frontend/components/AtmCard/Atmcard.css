@@ -1,0 +1,41 @@
+.atmcard {
+  /* border: 1px solid; */
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #51fbdc, #d55eff, #9cbeff);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  /* position: ; */
+}
+
+.cardBal {
+  width: 100%;
+  height: 20%;
+  /* border: 1px solid; */
+  /* z-index: 100; */
+  background-color: #373737;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.addCont {
+  width: 100%;
+  height: 40px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+}
+.addCard {
+  /* padding: 10px; */
+}
+
+.atmCont {
+  /* border: 1px solid; */
+}
+
+.atmCont h3 {
+  /* border: 1px solid; */
+}
