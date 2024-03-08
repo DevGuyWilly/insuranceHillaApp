@@ -16,6 +16,9 @@ public class ChatEndpoint {
         public @NonNull String text;
         public Instant time;
         public @NonNull String username;
+        public  int userColorIndex;
+        public String userAbbr;
+
     }
 
     private final Many<Message> chatSink = Sinks.many().multicast().directBestEffort();;

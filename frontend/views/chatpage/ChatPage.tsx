@@ -4,42 +4,58 @@ import { MessageInput } from "@hilla/react-components/MessageInput.js";
 import type { MessageListItem } from "@vaadin/message-list";
 import Logo from "../../assets/logo.png";
 import Navbar from "../../components/Navbar/Navbar";
-import "../../themes/insuranceapp/styles.css";
-import Message from "Frontend/generated/com/example/application/ChatEndpoint/Message";
+import "./ChatPage.css";
 import { ChatEndpoint } from "Frontend/generated/endpoints";
 
-// import { getPeople } from 'Frontend/demo/domain/DataService';
-
 export default function ChatPage() {
-  function getPeople(arg0: { count: number }) {
-    throw new Error("Function not implemented.");
-  }
-
-  const [messages, setMessages] = useState<Message[]>([]);
-
   const [items, setItems] = useState<MessageListItem[]>([]);
-  const [userName, setUserName] = useState<String>("");
+  const [userName, setUserName] = useState("");
 
-  // useEffect(() => {
-  //   getPeople({ count: 1 }).then(({ people }) => {
-  //     const person = people[0];
-  //     setItems([
-  //       {
-  //         text: "Nature does not hurry, yet everything gets accomplished.",
-  //         time: "yesterday",
-  //         userName: "Matt Mambo",
-  //         userColorIndex: 1,
-  //       },
-  //       {
-  //         text: "Using your talent, hobby or profession in a way that makes you contribute with something good to this world is truly the way to go.",
-  //         time: "right now",
-  //         userName: "Linsey Listy",
-  //         userColorIndex: 2,
-  //         userImg: person.pictureUrl,
-  //       },
-  //     ]);
-  //   });
-  // }, []);
+  const getCurrentTime: any = () => {
+    const now = new Date();
+    let hours = now.getHours();
+    let minutes: any = now.getMinutes();
+
+    // Convert to 12-hour format
+    const ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12 || 12;
+
+    // Add leading zero to minutes if needed
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    // Format the time as "h:mm am/pm"
+    const formattedTime = `${hours}:${minutes} ${ampm}`;
+
+    return formattedTime;
+  };
+
+  // Calling the function to get the result
+
+  const handleUsernameChange = (e: any) => {
+    setUserName(e.target.value);
+  };
+
+  useEffect(() => {
+    console.log("Ran Here One");
+
+    // Join the chat when the component mounts
+    const subscription = ChatEndpoint.join().onNext((message: any) => {
+      // Handle the incoming message
+      setItems((prevMessages: any) => [
+        ...prevMessages,
+        {
+          text: message.text,
+          time: message.time,
+          userName: message.username, // Assuming the username is available in 'message'
+          userAbbr: message.username.slice(0, 1),
+          userColorIndex: 3,
+        },
+      ]);
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => subscription.cancel();
+  }, []);
 
   return (
     <>
@@ -106,24 +122,29 @@ export default function ChatPage() {
           {/*  */}
         </div>
         {/*  */}
-        <MessageList items={items} />
-        <MessageInput
-          onSubmit={(e: CustomEvent) => {
-            ChatEndpoint.send({});
-            //
-            setItems([
-              ...items,
-              {
-                text: e.detail.value,
-                time: "seconds ago",
-                userName: "Milla Sting",
-                userAbbr: "MS",
-                userColorIndex: 3,
-              },
-            ]);
-          }}
-        />
+        <div className="chatLayout">
+          <div>
+            <input
+              type="text"
+              defaultValue={userName}
+              onChange={(e) => handleUsernameChange(e)}
+            />
+            <MessageList items={items} />
+            <MessageInput
+              onSubmit={(e: CustomEvent) => {
+                ChatEndpoint.send({
+                  text: e.detail.value,
+                  username: userName,
+                  userAbbr: userName.slice(0, 1),
+                  userColorIndex: 3,
+                });
+              }}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
 }
+
+
