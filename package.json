@@ -28,6 +28,7 @@
     "@vaadin/router": "1.7.5",
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
+    "dayjs": "^1.11.10",
     "highcharts": "^11.4.0",
     "highcharts-react-official": "^3.2.1",
     "lit": "3.1.0",
@@ -87,7 +88,8 @@
     "@mui/icons-material": "$@mui/icons-material",
     "@mui/material": "$@mui/material",
     "highcharts-react-official": "$highcharts-react-official",
-    "highcharts": "$highcharts"
+    "highcharts": "$highcharts",
+    "dayjs": "$dayjs"
   },
   "vaadin": {
     "dependencies": {
@@ -131,6 +133,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "46cde6220a351e02620592d8c73228a45ae53585dbdac4236d0d0301671e80f4"
+    "hash": "d54e9385ae37c8b0860602f5a70cd29b1e611016f1d8c1388c26b711fb6d3147"
   }
 }
